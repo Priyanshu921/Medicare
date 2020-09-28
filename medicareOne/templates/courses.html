@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {%load static%}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>MIMS</title>
+    <link rel='icon' href='{% static "medicareOne/img/logo.ico"%}'>
+    <style>
+      body{
+        background-image:url('{% static "medicareOne/img/dark_leather_4k.jpg"%}');
+      }
+    </style>
+    <link rel="stylesheet" href='{% static "responsive.css"%}'>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+</head>
+<body style= background-size:cover;'>
+    <div class="fixed-top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/" style='padding-right:150px;' ><img src='{% static "medicareOne/img/logo.png"%}' width=20% height=20% style='padding-right: 15px;'>Medicare Institute of Medical Science</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav" style="margin-left:290px;">
+        <ul class="navbar-nav">
+          <li class="nav-item ">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link active" href="#">Courses</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/faculty">Faculty Members</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/elitest">Elite Students</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              About Us
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/iaag">Institute at a Glance</a>
+              <a class="dropdown-item" href="/administration">Administration</a>
+              <a class="dropdown-item" href="/leadership">Leadership</a>
+              <a class="dropdown-item" href="/cch">Certificate in C.H.</a>
+              <a class="dropdown-item" href="/ati">About the Institute</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    </div>
+    <div class="container " style='margin-bottom:150px;backdrop-filter: blur(102px);margin-top:105px;background-color:rgba(169, 169, 169, 0.205);box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);'>
+    <h2 class='text-center text-white pt-5'>Select Course</h2>
+    <select class='ml-4'style='height:40px;width:1000px;color:tomato;margin-top:50px;margin-bottom:50px;' id="course" name='course' placeholder='select'>
+        <option>Select </option>
+        <option>B.P.T</option>
+        <option>B.M.L.T</option>
+        <option>D.M.L.T</option>
+        <option>C.C.H</option>
+        <option>M.M.L.T</option>
+    </select>   
+    <div class='mb-5' style='margin-left:400px;'>
+    <button  class=" SSR btn btn-primary" value='hig' name='but'>Highlights</button>
+    <button  class="SSR btn btn-primary"  value='eli' name='but'>Eligibility</button>
+    <button  class="SSR btn btn-primary" value='adm' name='but'>Admission</button>
+    </div>
+    <div id='p' class='text-white text-center pb-5'>{% autoescape off %}Please Select any Course{% endautoescape %}
+    </div>
+  
+  
+    </div>
+  <script >
+      
+      var course
+$('option').click(function(){
+course=$(this).text();
+console.log(course)
+})
+$('.SSR').click(function(){
+    if(course=='B.P.T' && $(this).text()=='Highlights')
+    {
+       var courses="{% autoescape off %}{{ hig2.0.hig }}{% endautoescape %}"
+        $('#p').html(courses);
+    }
+    else if(course=='B.P.T' && $(this).text()=='Eligibility')
+    {
+       var courses="{% autoescape off %}{{ hig2.0.eli }}{% endautoescape %}"
+        $('#p').html(courses);
+    }
+    else if(course=='B.P.T' && $(this).text()=='Admission')
+    {
+       var courses="{% autoescape off %}{{ hig2.0.adm }}{% endautoescape %}"
+        $('#p').html(courses);
+    }
+    else if(course=='B.M.L.T' && $(this).text()=='Highlights')
+    {
+       var courses="{% autoescape off %}{{ hig2.2.hig }}{% endautoescape %}"
+        $('#p').html(courses);
+    }
+    else if(course=='B.M.L.T' && $(this).text()=='Eligibility')
+    {
+       var courses="{% autoescape off %}{{ hig2.2.eli }}{% endautoescape %}"
+        $('#p').html(courses);
+    }
+    if(course=='B.M.L.T' && $(this).text()=='Admission')
+    {
+       var courses="{% autoescape off %}{{ hig2.2.adm }}{% endautoescape %}"
+        $('#p').html(courses);
+    }
+    else if(course=='D.M.L.T' && $(this).text()=='Highlights')
+    {
+       var courses="{% autoescape off %}{{ hig2.3.hig }}{% endautoescape %}"
+        $('#p').html(courses);
+    }
+    else if(course=='D.M.L.T' && $(this).text()=='Eligibility')
+    {
+       var courses="{% autoescape off %}{{ hig2.3.eli }}{% endautoescape %}"
+        $('#p').html(courses);
+    }
+    else if(course=='D.M.L.T' && $(this).text()=='Admission')
+    {
+       var courses="{% autoescape off %}{{ hig2.3.adm }}{% endautoescape %}"
+        $('#p').html(courses);
+    }
+    else if(course=='C.C.H' && $(this).text()=='Highlights')
+    {
+       var courses="{% autoescape off %}{{ hig2.5.hig }}{% endautoescape %}"
+        $('#p').html(courses);
+    }
+    else if(course=='C.C.H' && $(this).text()=='Eligibility')
+    {
+       var courses="{% autoescape off %}{{ hig2.5.eli }}{% endautoescape %}"
+        $('#p').html(courses);
+    }
+    else if(course=='C.C.H' && $(this).text()=='Admission')
+    {
+       var courses="{% autoescape off %}{{ hig2.5.adm }}{% endautoescape %}"
+        $('#p').html(courses);
+    }
+    else if(course=='M.M.L.T' && $(this).text()=='Highlights')
+    {
+       var courses="{% autoescape off %}{{ hig2.4.hig }}{% endautoescape %}"
+        $('#p').html(courses);
+    }
+    else if(course=='M.M.L.T' && $(this).text()=='Eligibility')
+    {
+       var courses="{% autoescape off %}{{ hig2.4.eli }}{% endautoescape %}"
+        $('#p').html(courses);
+    }
+    else if(course=='M.M.L.T' && $(this).text()=='Admission')
+    {
+       var courses="{% autoescape off %}{{ hig2.4.adm }}{% endautoescape %}"
+        $('#p').html(courses);
+    }
+
+    
+})
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!----------------Footer--------------->
+<footer class="p-3 text-center" style='background-color: #f8f9fa;'>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3>Copyright &copy; 2020,Shulin Developers</h3>
+                <h6>All Rights Reserved</h6>
+                <h6>Developed & Maintained by
+                    <i class="fa fa-users"></i>
+                    <a class="text-warning" href="https://github.com/MAPx-IT-Solutions" target="_blank">
+                        Shulin Developers
+                    </a>
+                    <div>Contact: <i class="fa fa-envelope-open"></i> 21799rahulj@gmail.com </i> <i class="fab fa-whatsapp"></i> +91 8463833378 <i class="fas fa-mobile-alt"></i>  +91 8319800658</div>
+                </h6>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
+
